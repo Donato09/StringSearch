@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section scripts {
+
+    <script type="text/javascript">
+        $("#btnSearch").on("click", function () {
+
+            $.get('@Url.Action("MaxWord", "Home")', { inputSentence: $("#txtStringSearch").val() }, function (result) {
+                $("#partialDiv").html(result);
+            });
+        });
+    </script>
+
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div>
+    <input type="button" id="btnSearch" value="Get Max String" />
+    <input type="text" id="txtStringSearch" value="" placeholder="Insert sentence"/>
+
+    <div id="partialDiv"></div>
+</div>
